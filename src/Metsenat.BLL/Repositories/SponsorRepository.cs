@@ -4,11 +4,6 @@ using Metsenat.BLL.ViewModels;
 using Metsenat.Data.Data;
 using Metsenat.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Metsenat.BLL.Repositories;
 public class SponsorRepository : ISponsorRepository
@@ -23,7 +18,7 @@ public class SponsorRepository : ISponsorRepository
     {
         if (!int.TryParse(createsponsorDto.Phone, out var phoneNumber))
             return false;
-       
+
         try
         {
             var sponsor = createsponsorDto.Adapt<Sponsor>();
