@@ -1,9 +1,8 @@
 using Metsenat.BLL.FilterDtos.Enum;
-using Metsenat.Common.Models;
 
 namespace Metsenat.BLL.FilterDtos;
 
-public class SponsorFilterDto : PaginationParams
+public class SponsorFilterDto
 {
     public decimal? Amount { get; set; }
     public ESponsorFilter? SponsorFilter { get; set; }
