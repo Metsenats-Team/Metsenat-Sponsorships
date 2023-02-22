@@ -1,28 +1,27 @@
 ﻿using Metsenat.BLL.DTOs;
 using Metsenat.BLL.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Metsenat.Api.Controllers
+namespace Metsenat.Api.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class SponsorController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class SponsorController : ControllerBase
+    private readonly ISponsorService sponsorService;
+
+    public SponsorController(ISponsorService sponsorService)
     {
-        private readonly ISponsorService sponsorService;
+        this.sponsorService = sponsorService;
+    }
 
-        public SponsorController(ISponsorService sponsorService)
-        {
-            this.sponsorService = sponsorService;
-        }
-
-        [HttpPost("/sponsors")]
-        public async Task<IActionResult> AddSponsor(CreateSponsorDto createSponsor)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            await sponsorService.CreateSponsor(createSponsor);
-            return Ok();
-        }
+    [HttpPost("/sponsors")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> AddSponsor(CreateSponsorDto createSponsor)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+        await sponsorService.CreateSponsor(createSponsor);
+        return Ok();
     }
 }
