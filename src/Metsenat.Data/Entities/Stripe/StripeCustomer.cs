@@ -1,4 +1,4 @@
-﻿namespace Metsenat.BLL.DTOs;
+﻿namespace Metsenat.Data.Entities.Stripe;
 public class StripeCustomer
 {
     public string Name { get; set; }

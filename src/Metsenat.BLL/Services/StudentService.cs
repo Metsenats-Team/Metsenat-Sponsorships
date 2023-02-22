@@ -1,8 +1,8 @@
 ﻿using Mapster;
 using Metsenat.BLL.DTOs;
-using Metsenat.BLL.Repositories;
+using Metsenat.BLL.Exceptions;
+using Metsenat.BLL.Interfaces;
 using Metsenat.BLL.ViewModels;
-using Metsenat.Common.Exceptions;
 using Metsenat.Data.Entities;
 
 namespace Metsenat.BLL.Services;

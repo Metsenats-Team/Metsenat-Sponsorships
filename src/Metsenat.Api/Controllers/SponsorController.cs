@@ -1,5 +1,5 @@
 ﻿using Metsenat.BLL.DTOs;
-using Metsenat.BLL.Services;
+using Metsenat.BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Metsenat.Api.Controllers;

@@ -1,6 +1,6 @@
-﻿using Metsenat.BLL.DTOs;
+﻿using Metsenat.Data.Entities.Stripe;
 
-namespace Metsenat.BLL.Services;
+namespace Metsenat.BLL.Interfaces;
 public interface IStripeService
 {
     Task<StripeCustomer> AddStripeCustomerAsync(AddStripeCustomer customer, CancellationToken ct);

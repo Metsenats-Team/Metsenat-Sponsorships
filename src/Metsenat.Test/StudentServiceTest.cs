@@ -1,6 +1,6 @@
 using Mapster;
 using Metsenat.BLL.DTOs;
-using Metsenat.BLL.Repositories;
+using Metsenat.BLL.Interfaces;
 using Metsenat.BLL.Services;
 using Metsenat.Data.Entities;
 using Moq;

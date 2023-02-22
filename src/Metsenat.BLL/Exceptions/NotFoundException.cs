@@ -1,4 +1,4 @@
-﻿namespace Metsenat.Common.Exceptions;
+﻿namespace Metsenat.BLL.Exceptions;
 public class NotFoundException : Exception
 {
     public NotFoundException(string message) : base(message)
