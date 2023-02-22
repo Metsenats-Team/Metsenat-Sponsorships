@@ -1,7 +1,7 @@
 ﻿using Metsenat.BLL.DTOs;
 using Metsenat.BLL.ViewModels;
 
-namespace Metsenat.BLL.Services
+namespace Metsenat.BLL.Interfaces
 {
     public interface ISponsorService
     {

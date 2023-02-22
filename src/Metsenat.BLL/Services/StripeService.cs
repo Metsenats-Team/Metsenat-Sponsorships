@@ -1,4 +1,5 @@
-﻿using Metsenat.BLL.DTOs;
+﻿using Metsenat.BLL.Interfaces;
+using Metsenat.Data.Entities.Stripe;
 using Stripe;
 
 namespace Metsenat.BLL.Services;

@@ -1,7 +1,7 @@
 ﻿using Metsenat.BLL.DTOs;
 using Metsenat.Data.Entities;
 
-namespace Metsenat.BLL.Repositories;
+namespace Metsenat.BLL.Interfaces;
 public interface IStudentRepository
 {
     Task<bool> AddStudentAsync(Student createStudentDto);
