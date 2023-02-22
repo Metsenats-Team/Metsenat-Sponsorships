@@ -1,11 +1,12 @@
 # Metsenat-Sponsorships
 
 - [x] aspnetcore
-- [x] blazor
-- signalr
+- [x] javascript
+- [x] React 
+- [ ] signalr
 - [x] postgres,
-- docker,
-- [] stripe,
+- [ ] docker,
+- [ ] stripe,
 - [x] efcore,
 - [x] mapster,
 - [x] fluentvalidation,
