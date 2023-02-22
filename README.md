@@ -6,7 +6,7 @@
 - [ ] signalr
 - [x] postgres,
 - [ ] docker,
-- [ ] stripe,
+- [x] stripe,
 - [x] efcore,
 - [x] mapster,
 - [x] fluentvalidation,
