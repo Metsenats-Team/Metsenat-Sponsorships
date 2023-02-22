@@ -21,7 +21,6 @@ public class AdminsController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-
         await _studentService.CreateStudentAsync(createStudentDto);
         return Ok();
     }
