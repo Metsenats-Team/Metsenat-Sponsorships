@@ -2,9 +2,9 @@
 
 - [x] aspnetcore
 - [x] blazor
-- [] signalr
+- signalr
 - [x] postgres,
-- [] docker,
+- docker,
 - [] stripe,
 - [x] efcore,
 - [x] mapster,
@@ -14,4 +14,4 @@
 - [x] unit test,
 - [x] xunit,
 - [x] moq,
-- [] fluentassertions 
+- [ ] fluentassertions 
