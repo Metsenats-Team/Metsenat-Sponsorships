@@ -2,7 +2,6 @@ using Mapster;
 using Metsenat.BLL.DTOs;
 using Metsenat.BLL.Repositories;
 using Metsenat.BLL.Services;
-using Metsenat.Common.Exceptions;
 using Metsenat.Data.Entities;
 using Moq;
 
@@ -48,7 +47,7 @@ public class StudentServiceTest
         _mockRepo.Setup(repo => repo.GetAllStudentsAsync()).ReturnsAsync(students);
         var result = await _studentService.GetAllStudentsAsync();
         Assert.NotNull(result);
-        Assert.Equal(students.Count,result.Count);
+        Assert.Equal(students.Count, result.Count);
     }
 
     [Fact]
@@ -85,7 +84,7 @@ public class StudentServiceTest
         _mockRepo.Setup(repo => repo.AddStudentAsync(student)).ReturnsAsync(true);
         var createStudentDto = student.Adapt<CreateStudentDto>();
         var result = await _studentService.CreateStudentAsync(createStudentDto);
-        
+
         Assert.NotNull(result);
         Assert.Contains(student.FullName, result.FullName);
     }

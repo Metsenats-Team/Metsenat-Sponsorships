@@ -1,5 +1,6 @@
 ﻿using Metsenat.BLL.DTOs;
 using Metsenat.BLL.Services;
+using Metsenat.BLL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Metsenat.Api.Controllers;
@@ -17,6 +18,7 @@ public class AdminsController : ControllerBase
     }
 
     [HttpPost("/students")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> AddStudents([FromBody] CreateStudentDto createStudentDto)
     {
         if (!ModelState.IsValid)
@@ -26,10 +28,12 @@ public class AdminsController : ControllerBase
     }
 
     [HttpGet("/students")]
+    [ProducesResponseType(typeof(List<StudentView>),StatusCodes.Status200OK)]
     public async Task<IActionResult> GetStudents()
         => Ok(await _studentService.GetAllStudentsAsync());
 
     [HttpGet("/students/{studentId:int}")]
+    [ProducesResponseType(typeof(StudentView), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetStudentById(int studentId)
         => Ok(await _studentService.GetStudentByIdAsync(studentId));
 
@@ -38,18 +42,22 @@ public class AdminsController : ControllerBase
         => Ok(await _studentService.DeleteStudentAsync(studentId));
 
     [HttpPut("/students/{studentId:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateStudent(int studentId, UpdateStudentDto updateStudentDto)
         => Ok(await _studentService.UpdateStudentAsync(studentId, updateStudentDto));
 
     [HttpGet("/sponsors")]
+    [ProducesResponseType(typeof(List<SponsorView>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllSponsors()
         => Ok(await _sponsorService.GetSponsors());
 
-    [HttpGet("/sponsor/{sponsorId:int}")]
+    [HttpGet("/sponsors/{sponsorId:int}")]
+    [ProducesResponseType(typeof(SponsorView), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetSponsorById(int sponsorId)
         => Ok(await _sponsorService.GetSponsorById(sponsorId));
 
     [HttpPut("/sponsors/{sponsorId:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateSponsor(int sponsorId, UpdateSponsorDto updateSponsorDto)
         => Ok(await _sponsorService.UpdateSponsor(sponsorId, updateSponsorDto));
 
