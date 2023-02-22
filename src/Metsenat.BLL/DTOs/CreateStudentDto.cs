@@ -11,5 +11,5 @@ public class CreateStudentDto
     [Required]
     public string? UniversityName { get; set; }
     public EStudentDegree StudentDegree { get; set; }
-    public string? AmountOfStudentsContract { get; set;}
+    public decimal? AmountOfStudentsContract { get; set;}
 }
