@@ -1,16 +1,16 @@
 # Metsenat-Sponsorships
-# Web-App for funding students. Payments are made using stripe.
+- Web-App for funding students. Payments are made using stripe.
 
-- [x] aspnetcore
+- [x] AspNetCore
 - [x] javascript
 - [x] React 
-- [ ] signalr
-- [x] postgres,
-- [ ] docker,
-- [x] stripe,
-- [x] efcore,
+- [ ] SignalR
+- [x] PostgreSQL,
+- [ ] Docker,
+- [x] Stripe (online payments),
+- [x] EfCore,
 - [x] mapster,
-- [x] fluentvalidation,
+- [ ] fluentvalidation,
 - [x] serilog,
 
 - [x] unit test,
