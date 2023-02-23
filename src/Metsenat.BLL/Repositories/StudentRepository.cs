@@ -1,8 +1,6 @@
-﻿using Castle.Core.Logging;
-using Metsenat.BLL.Interfaces;
+﻿using Metsenat.BLL.Interfaces;
 using Metsenat.Data.Data;
 using Metsenat.Data.Entities;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Metsenat.BLL.Repositories;
@@ -39,7 +37,7 @@ public class StudentRepository : IStudentRepository
         var student = await _context.Students.FirstOrDefaultAsync(s => s.Id == studentId);
         if (student is null)
             return null!;
-        
+
         return student;
     }
     public async Task<Student> UpdateStudentAsync(Student updateStudent)

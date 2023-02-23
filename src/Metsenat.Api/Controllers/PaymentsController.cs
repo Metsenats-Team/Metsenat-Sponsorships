@@ -18,7 +18,7 @@ public class PaymentsController : ControllerBase
     {
         StripeCustomer createdCustomer = await _stripeService.AddStripeCustomerAsync(customer, ct);
 
-        return StatusCode(StatusCodes.Status200OK, createdCustomer);
+        return Ok(createdCustomer);
     }
 
     [HttpPost("payment/add")]
@@ -28,6 +28,6 @@ public class PaymentsController : ControllerBase
         StripePayment createdPayment = await _stripeService
             .AddStripePaymentAsync(payment, ct);
 
-        return StatusCode(StatusCodes.Status200OK, createdPayment);
+        return Ok(createdPayment);
     }
 }
