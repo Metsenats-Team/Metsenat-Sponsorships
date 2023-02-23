@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Serilog;
+﻿using Serilog;
 
-namespace Metsenat.Common.Extenstions;
+namespace Metsenat.Api.Extensions;
 public static class LoggerExtensions
 {
     public static void AddSerilogConfig(this WebApplicationBuilder builder)

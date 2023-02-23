@@ -2,12 +2,9 @@
 using Metsenat.BLL.Repositories;
 using Metsenat.BLL.Services;
 using Metsenat.Data.Data;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Metsenat.Common.Extenstions;
+namespace Metsenat.Api.Extensions;
 public static class RequiredServiceExtensions
 {
     public static void AddAppDbContext(this WebApplicationBuilder builder)

@@ -1,4 +1,4 @@
-using Metsenat.Common.Extenstions;
+using Metsenat.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

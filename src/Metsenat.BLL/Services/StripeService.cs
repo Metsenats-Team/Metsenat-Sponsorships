@@ -18,7 +18,6 @@ public class StripeService : IStripeService
         _customerService = customerService;
         _tokenService = tokenService;
     }
-
     public async Task<StripeCustomer> AddStripeCustomerAsync(AddStripeCustomer customer, CancellationToken ct)
     {
         //! here we are setting stripe token options
@@ -48,7 +47,6 @@ public class StripeService : IStripeService
         //! finally we have to return customer that had been created at Stripe
         return new StripeCustomer(createdCustomer.Name, createdCustomer.Email, createdCustomer.Id);
     }
-
     public async Task<StripePayment> AddStripePaymentAsync(AddStripePayment payment, CancellationToken ct)
     {
         var paymentOptions = new ChargeCreateOptions
