@@ -1,5 +1,5 @@
 # Metsenat-Sponsorships
-- Web-App for funding students. Payments are made using stripe.
+- Web-App for financing students. Payments are made using stripe.
 
 - [x] AspNetCore
 - [x] javascript
