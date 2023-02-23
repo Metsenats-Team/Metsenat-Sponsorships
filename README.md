@@ -2,7 +2,7 @@
 - Web-App for financing students. Payments are made using stripe.
 
 - [x] AspNetCore
-- [x] javascript
+- [x] Javascript 
 - [x] React 
 - [ ] SignalR
 - [x] PostgreSQL,
