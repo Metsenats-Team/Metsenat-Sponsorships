@@ -21,7 +21,7 @@ public class SponsorController : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-        await sponsorService.CreateSponsor(createSponsor);
+        await sponsorService.CreateSponsorAsync(createSponsor);
         return Ok();
     }
 }
