@@ -5,10 +5,10 @@ namespace Metsenat.BLL.Interfaces
 {
     public interface ISponsorService
     {
-        Task<List<SponsorView>> GetSponsors();
-        Task<SponsorView> GetSponsorById(int sponsorId);
-        Task<SponsorView> CreateSponsor(CreateSponsorDto createSponsor);
-        Task<SponsorView> UpdateSponsor(int sponsorId, UpdateSponsorDto updateSponsorDto);
-        Task<bool> DeleteSponsor(int sponsorId);
+        Task<List<SponsorView>> GetSponsorsAsync();
+        Task<SponsorView> GetSponsorByIdAsync(int sponsorId);
+        Task<SponsorView> CreateSponsorAsync(CreateSponsorDto createSponsor);
+        Task<SponsorView> UpdateSponsorAsync(int sponsorId, UpdateSponsorDto updateSponsorDto);
+        Task<bool> DeleteSponsorAsync(int sponsorId);
     }
 }

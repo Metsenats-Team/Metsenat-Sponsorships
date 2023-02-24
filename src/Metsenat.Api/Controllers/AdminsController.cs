@@ -49,19 +49,19 @@ public class AdminsController : ControllerBase
     [HttpGet("/sponsors")]
     [ProducesResponseType(typeof(List<SponsorView>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllSponsors()
-        => Ok(await _sponsorService.GetSponsors());
+        => Ok(await _sponsorService.GetSponsorsAsync());
 
     [HttpGet("/sponsors/{sponsorId:int}")]
     [ProducesResponseType(typeof(SponsorView), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetSponsorById(int sponsorId)
-        => Ok(await _sponsorService.GetSponsorById(sponsorId));
+        => Ok(await _sponsorService.GetSponsorByIdAsync(sponsorId));
 
     [HttpPut("/sponsors/{sponsorId:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateSponsor(int sponsorId, UpdateSponsorDto updateSponsorDto)
-        => Ok(await _sponsorService.UpdateSponsor(sponsorId, updateSponsorDto));
+        => Ok(await _sponsorService.UpdateSponsorAsync(sponsorId, updateSponsorDto));
 
     [HttpDelete("/sponsors/{sponsorId:int}")]
     public async Task<IActionResult> DeleteSponsor(int sponsorId)
-        => Ok(await _sponsorService.DeleteSponsor(sponsorId));
+        => Ok(await _sponsorService.DeleteSponsorAsync(sponsorId));
 }

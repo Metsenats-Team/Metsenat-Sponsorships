@@ -15,7 +15,7 @@ public class SponsorRepository : ISponsorRepository
         _context = context;
     }
 
-    public async Task<bool> CreateSponsor(CreateSponsorDto createsponsorDto)
+    public async Task<bool> CreateSponsorAsync(CreateSponsorDto createsponsorDto)
     {
         if (!int.TryParse(createsponsorDto.Phone, out var phoneNumber))
             return false;
@@ -34,7 +34,7 @@ public class SponsorRepository : ISponsorRepository
         }
     }
 
-    public async Task<bool> DeleteSponsor(int sponsorId)
+    public async Task<bool> DeleteSponsorAsync(int sponsorId)
     {
         try
         {
@@ -50,19 +50,19 @@ public class SponsorRepository : ISponsorRepository
         }
     }
 
-    public async Task<List<SponsorView>> GetSponsors()
+    public async Task<List<SponsorView>> GetSponsorsAsync()
     {
         var sponsors = await _context.Sponsors.ToListAsync();
         return sponsors.Adapt<List<SponsorView>>();
     }
 
-    public async Task<Sponsor> GetSponsorById(int sponsorId)
+    public async Task<Sponsor> GetSponsorByIdAsync(int sponsorId)
     {
         var sponsor = await _context.Sponsors.FirstOrDefaultAsync(sponsor => sponsor.Id == sponsorId);
         return sponsor;
     }
 
-    public async Task<Sponsor> UpdateSponsor(int sponsorId, UpdateSponsorDto updateSponsorDto)
+    public async Task<Sponsor> UpdateSponsorAsync(int sponsorId, UpdateSponsorDto updateSponsorDto)
     {
         var sponsor = await _context.Sponsors.FirstOrDefaultAsync(sponsor => sponsor.Id == sponsorId);
         sponsor.SponsorType = updateSponsorDto.SponsorStatus;
