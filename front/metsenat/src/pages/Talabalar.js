@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeadWrapper from "../style/HeadWrapper";
 import { Link } from "react-router-dom";
 import Header from "../containers/Header";
@@ -14,6 +14,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import BrandWrapper from "../style/BrandWrapper";
 import StudentsWrapper from "../style/StudentsWrapper";
+import axios from "axios";
 
 function MyVerticallyCenteredModal(props) {
   return (
@@ -79,6 +80,22 @@ function MyVerticallyCenteredModal(props) {
 
 const Talabalar = () => {
   const [modalShow, setModalShow] = React.useState(false);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://localhost:7200/students", {
+        headers: {
+          Authorization: localStorage.getItem("tocen"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <Header />
@@ -232,7 +249,32 @@ const Talabalar = () => {
                 </td>
               </tr>
 
-              <tr></tr>
+              {data.map((v) => {
+                return (
+                  <tr>
+                    <th scope="row">{v.id}</th>
+                    <td>{v.name}</td>
+                    <td>{v.magist}</td>
+                    <td>{v.uName}</td>
+                    <td>
+                      <p className="sum d-flex">
+                        {v.sum}<p className=" ms-2 val">UZS</p>
+                      </p>
+                    </td>
+
+                    <td>
+                      <p className="sum d-flex">
+                        {v.sum}<p className=" ms-2 val">UZS</p>
+                      </p>
+                    </td>
+                    <td className="text-center">
+                      <Link to={"/talaba"}>
+                        <FontAwesomeIcon icon={faEye} />
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
           {/* ------------- modal */}

@@ -5,13 +5,33 @@ import {
   faUpDownLeftRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../containers/Header";
 import HeadWrapper from "../style/HeadWrapper";
 import StudentsWrapper from "../style/StudentsWrapper";
+import axios from "axios";
 
 const StudentPlus = () => {
+  const[name, setName] = useState("");
+  const[number, setNumber] = useState();
+  const[summa, setSumma] = useState();
+  const navigate = useNavigate();
+  const sendData = () => {
+    console.log(name, number, summa);
+    axios .post("https://reqres.in/api/users", {
+      name : name,
+      number : number,
+      summa: summa
+    })
+    .then ((res) => {
+      localStorage.setItem("tocen", res.data.token);
+      navigate("/talabalar");
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
   return (
     <>
       <Header />
@@ -36,6 +56,7 @@ const StudentPlus = () => {
                   type="text"
                   placeholder="Abdullayev Abdulla Abdulla o’g’li"
                   className="form-control inputPlus"
+                  value={name} onChange={(e) => {setName(e.target.value)}}
                 />
               </div>
               <div className="col-6">
@@ -44,6 +65,7 @@ const StudentPlus = () => {
                   type="number"
                   placeholder="+998 00 000-00-00"
                   className="form-control inputPlus"
+                  value={number} onChange={(e) => {setNumber(e.target.value)}}
                 />
               </div>
               <div className="col-12">
@@ -103,10 +125,11 @@ const StudentPlus = () => {
                   type="number"
                   placeholder="Summani kiriting"
                   className="form-control inputPlus"
+                  value={summa} onChange={(e) => {setSumma(e.target.value)}}
                 />
               </div>
             </div>
-            <div className="d-flex justify-content-end mt-4"><button className="btn btn-primary"><FontAwesomeIcon icon={faPlus} className="me-2" />Qo‘shish</button></div>
+            <div className="d-flex justify-content-end mt-4"><button className="btn btn-primary" onClick={sendData}><FontAwesomeIcon icon={faPlus} className="me-2" />Qo‘shish</button></div>
           </div>
         </div>
           

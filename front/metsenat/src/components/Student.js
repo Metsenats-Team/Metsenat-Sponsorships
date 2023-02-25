@@ -7,7 +7,7 @@ import {
   faPlus,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../containers/Header";
 import HeadWrapper from "../style/HeadWrapper";
@@ -16,9 +16,25 @@ import user from "../img/user.svg";
 import quizImg from "../img/quizImg.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/Modal";
+import axios from "axios";
 import Button from "react-bootstrap/Button";
 
 function MyVerticallyCenteredModal2(props) {
+  const [name, setName] = useState();
+  const [summa, setSumma] = useState();
+  const sendData = () => {
+    console.log(name, summa);
+    axios .put("https://localhost:7200/student", {
+      name : name,
+      summa : summa
+    })
+    .then ((res) => {
+      localStorage.setItem("tocen", res.data.token);  
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
   return (
     <Modal
       {...props}
@@ -39,6 +55,7 @@ function MyVerticallyCenteredModal2(props) {
               type="text"
               placeholder="Abdullayev Abdulla Abdulla o’g’li"
               className="form-control inputPlus"
+              value={name} onChange={(e) => {setName(e.target.value)}}
             />
           </div>
           <div>
@@ -47,6 +64,7 @@ function MyVerticallyCenteredModal2(props) {
               type="number"
               placeholder="Summani kiriting"
               className="form-control inputPlus"
+              value={summa} onChange={(e) => {setSumma(e.target.value)}}
             />
           </div>
         </HomiyWrapper>
@@ -58,14 +76,28 @@ function MyVerticallyCenteredModal2(props) {
         </Button>
         <Button onClick={props.onHide}>
           <FontAwesomeIcon icon={faSave} className="me-2" />
-          Saqlash
+          <button className="btn text-light" onClick={sendData}>Saqlash</button>
         </Button>
       </Modal.Footer>
     </Modal>
   );
 }
-
 function MyVerticallyCenteredModal1(props) {
+  const [name, setName] = useState();
+  const [summa, setSumma] = useState();
+  const sendData = () => {
+    console.log(name, summa);
+    axios .post("https://localhost:7200/student", {
+      email : name,
+      summa : summa
+    })
+    .then ((res) => {
+      localStorage.setItem("tocen", res.data.token);  
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
   return (
     <Modal
       {...props}
@@ -86,6 +118,7 @@ function MyVerticallyCenteredModal1(props) {
               type="text"
               placeholder="Abdullayev Abdulla Abdulla o’g’li"
               className="form-control inputPlus"
+              value={name} onChange={(e) => {setName(e.target.value)}}
             />
           </div>
           <div>
@@ -94,6 +127,7 @@ function MyVerticallyCenteredModal1(props) {
               type="number"
               placeholder="Summani kiriting"
               className="form-control inputPlus"
+              value={summa} onChange={(e) => {setSumma(e.target.value)}}
             />
           </div>
         </HomiyWrapper>
@@ -101,13 +135,30 @@ function MyVerticallyCenteredModal1(props) {
       <Modal.Footer>
         <Button onClick={props.onHide}>
           <FontAwesomeIcon icon={faPlus} className="me-2" />
-          Qo'shish
+          <button className="btn text-light">Qo'shish</button>
         </Button>
       </Modal.Footer>
     </Modal>
   );
 }
 function MyVerticallyCenteredModal(props) {
+  const[name, setName] = useState();
+  const[number, setNumber] = useState();
+  const[summa, setSumma] = useState();
+  const sendData = () => {
+    console.log(name, number, summa);
+    axios .put("https://", {
+      name: name,
+      number: number,
+      summa: summa
+    })
+    .then((res) => {
+      localStorage.setItem("tocen", res.data.token)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
   return (
     <Modal
       {...props}
@@ -126,6 +177,7 @@ function MyVerticallyCenteredModal(props) {
               type="text"
               placeholder="Abdullayev Abdulla Abdulla o’g’li"
               className="form-control inputPlus"
+              value={name} onChange={(e) => {setName(e.target.value)}}
             />
           </div>
           <div>
@@ -134,6 +186,7 @@ function MyVerticallyCenteredModal(props) {
               type="number"
               placeholder="+998 00 000-00-00"
               className="form-control inputPlus"
+              value={number} onChange={(e) => {setNumber(e.target.value)}}
             />
           </div>
           <div>
@@ -166,6 +219,7 @@ function MyVerticallyCenteredModal(props) {
               type="number"
               placeholder="1 000 000"
               className="form-control inputPlus"
+              value={summa} onChange={(e) => {setSumma(e.target.value)}}
             />
           </div>
         </HomiyWrapper>
@@ -173,7 +227,7 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Footer>
         <Button onClick={props.onHide}>
           <FontAwesomeIcon icon={faSave} className="me-2" />
-          Saqlash
+          <button className="btn text-light" onClick={sendData}>Saqlash</button>
         </Button>
       </Modal.Footer>
     </Modal>
@@ -184,12 +238,13 @@ const Student = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow1, setModalShow1] = React.useState(false);
   const [modalShow2, setModalShow2] = React.useState(false);
+  
   return (
     <>
       <Header />
       <HeadWrapper>
         <div className="head">
-          <Link to={"/homiylar"}>
+          <Link to={"/talabalar"}>
             <p className="plusTitle d-flex">
               <FontAwesomeIcon icon={faLeftLong} className="me-2" />
               Ishmuhammedov Aziz Ishqobilovich{" "}

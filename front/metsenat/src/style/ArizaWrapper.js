@@ -6,7 +6,7 @@ const ArizaWrapper = styled.div`
     background: #ffffff;
     box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.03);
     p {
-      margin: 0;
+      margin: 0px;
     }
     .headLink {
       order: 0;
@@ -70,6 +70,37 @@ const ArizaWrapper = styled.div`
         letter-spacing: 1.125px;
         text-transform: uppercase;
         color: #1d1d1f;
+      }
+    }
+    .right {
+      img {
+        width: 100%;
+        height: 900px;
+      }
+    }
+  }
+  @media (max-width: 1100px) {
+    .head {
+      padding: 10px 40px;
+      background: #ffffff;
+      box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.03);
+      p {
+        margin: 0;
+      }
+      .headLink {
+        order: 0;
+        margin-right: 40px;
+        color: #28293d;
+        letter-spacing: -0.35px;
+        font-size: 12px;
+        font-weight: 500;
+        font-family: "SF Pro Text", sans-serif;
+        text-decoration: none;
+      }
+      .headBut {
+        border: 2px solid #3366ff;
+        border-radius: 8px;
+        color: #3366ff;
       }
     }
   }

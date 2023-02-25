@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import ArizaWrapper from "../style/ArizaWrapper";
 import logo from "../img/metsenatclub.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import rigthImg from "../img/Right.jpg";
+import axios from "axios";
 
 const Ariza = () => {
+  const[name, setName] = useState("");
+  const[number, setNumber] = useState();
+  const[summa, setSumma] = useState();
+  const navigate = useNavigate();
+  const sendData = () => {
+    console.log(name, number, summa);
+    axios .post("https://localhost:7200/ariza", {
+      name : name,
+      number : number,
+      summa: summa
+    })
+    .then ((res) => {
+      localStorage.setItem("tocen", res.data.token);
+      navigate("/dashboard");
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
   return (
     <ArizaWrapper>
       <header>
@@ -49,6 +69,7 @@ const Ariza = () => {
                 type="text"
                 placeholder="Abdullayev Abdulla Abdulla o’g’li"
                 className="form-control inputPlus"
+                value={name} onChange={(e) => {setName(e.target.value)}}
               />
             </div>
             <div>
@@ -57,6 +78,7 @@ const Ariza = () => {
                 type="number"
                 placeholder="+998 00 000-00-00"
                 className="form-control inputPlus"
+                value={number} onChange={(e) => {setNumber(e.target.value)}}
               />
             </div>
             <div>
@@ -65,12 +87,13 @@ const Ariza = () => {
                 type="number"
                 placeholder="Summani kiriting"
                 className="form-control inputPlus"
+                value={summa} onChange={(e) => {setSumma(e.target.value)}}
               />
             </div>
-            <button className="btn w-100 btn-primary mt-3">Yuborish</button>
+            <button className="btn w-100 btn-primary mt-3" onClick={sendData}>Yuborish</button>
         </div>
-        <div className="w-50">
-          <img src={rigthImg} className="w-100" alt="" />
+        <div className="w-50 right">
+          <img src={rigthImg} alt="" />
         </div>
       </div>
     </ArizaWrapper>

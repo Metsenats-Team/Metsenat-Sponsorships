@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LoginWrapper from "../style/LoginWrapper";
 import logo from "../img/metsenatclub.svg";
 import recapt from "../img/reCAPTCHA.svg";
-import Header from "../containers/Header";
-import Head from "./Head";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const sendData = () => {
+    console.log(name, password);
+    axios .post("https://reqres.in/api/login", {
+      email : name,
+      password : password
+    })
+    .then ((res) => {
+      localStorage.setItem("tocen", res.data.token);
+      navigate("/dashboard");
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
   return (
     <LoginWrapper>
       <div className="container w-25">
@@ -16,11 +33,11 @@ const Login = () => {
           <p className="kirish">Kirish</p>
           <div>
             <p className="rubik">lOGIN</p>
-            <input className="form-control int" placeholder="adm8904"></input>
+            <input className="form-control int" value={name} onChange={(e) => {setName(e.target.value)}} placeholder="adm8904"></input>
           </div>
           <div>
             <p className="rubik">pAROL</p>
-            <input className="form-control int" placeholder="*****"></input>
+            <input className="form-control int" value={password} onChange={(e) => {setPassword(e.target.value)}} placeholder="*****"></input>
           </div>
           <div className="recapt d-flex justify-content-between">
             <div className="d-flex align-items-center">
@@ -34,9 +51,9 @@ const Login = () => {
             </div>
             <img src={recapt} alt="recapt" className="p-2" />
           </div>
-          <Link to={"/dashboard"}>
-            <button className="btn btn-primary w-100 mt-3">Kirish</button>
-          </Link>
+          {/* <Link to={"/dashboard"}> */}
+            <button onClick={sendData} className="btn btn-primary w-100 mt-3">Kirish</button>
+          {/* </Link> */}
         </div>
       </div>
     </LoginWrapper>

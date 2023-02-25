@@ -5,7 +5,7 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../containers/Header";
 import BrandWrapper from "../style/BrandWrapper";
@@ -13,6 +13,7 @@ import HeadWrapper from "../style/HeadWrapper";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-date-picker";
+import axios from "axios";
 
 function MyApp() {
   const [value, onChange] = useState(new Date());
@@ -124,6 +125,21 @@ function MyVerticallyCenteredModal(props) {
 
 const Homiylar = () => {
   const [modalShow, setModalShow] = React.useState(false);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://", {
+        headers: {
+          Authorization: localStorage.getItem("tocen"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <Header />
@@ -322,6 +338,34 @@ const Homiylar = () => {
                   </Link>
                 </td>
               </tr>
+              {data.map((v) => {
+                return (
+                  <tr>
+                    <th scope="row">{v.id}</th>
+                    <td>{v.name}</td>
+                    <td>{v.number}</td>
+                    <td>
+                      <p className="sum d-flex">
+                        {v.sum}<p className=" ms-2 val">UZS</p>
+                      </p>
+                    </td>
+                    <td>
+                      <p className="sum d-flex">
+                        {v.sum}<p className=" ms-2 val">UZS</p>
+                      </p>
+                    </td>
+                    <td>{v.date}</td>
+                    <td>
+                      <p className="cancel">Bekor qilingan</p>
+                    </td>
+                    <td className="text-center">
+                      <Link to={"/homiy"}>
+                        <FontAwesomeIcon icon={faEye} />
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

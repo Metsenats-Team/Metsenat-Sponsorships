@@ -29,31 +29,8 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Header>
       <Modal.Body>
         <HomiyWrapper>
-          <div className="d-flex userTah mt-2">
-            <button className="btn jshah border-end-0">
-              Jismoniy shaxs
-            </button>
-            <button className="btn yuridik border-start-0">
-              Yuridik shaxs
-            </button>
-          </div>
           <div className="userTah mb-4">
-            <div>
-              <p className="mb-2 modTitle">F.I.Sh. (Familiya Ism Sharif)</p>
-              <input
-                type="text"
-                placeholder="Abdullayev Abdulla Abdulla o’g’li"
-                className="form-control inputPlus"
-              />
-            </div>
-            <div>
-              <p className="mb-2 modTitle">Telefon raqam</p>
-              <input
-                type="number"
-                placeholder="+998 00 000-00-00"
-                className="form-control inputPlus"
-              />
-            </div>
+            
             <div>
               <p className="mb-2 modTitle">holati</p>
 
@@ -63,23 +40,6 @@ function MyVerticallyCenteredModal(props) {
                 <option value="2">Moderatsiyada</option>
                 <option value="3">Tasdiqlangan</option>
                 <option value="4">Bekor qilingan</option>
-              </select>
-            </div>
-            <div>
-              <p className="mb-2 modTitle">Homiylik summasi</p>
-              <input
-                type="number"
-                placeholder="1 000 000"
-                className="form-control inputPlus"
-              />
-            </div>
-            <div>
-              <p className="mb-2 modTitle">To'lov turi</p>
-
-              <select className="modInt custom-select " id="inputGroupSelect02">
-                <option selected>Pul o'tkazmalari</option>
-                <option value="1">Karta</option>
-                <option value="2">Naqd</option>
               </select>
             </div>
           </div>
@@ -95,7 +55,7 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 
-const JShUser = () => {
+const SponsorEdit = () => {
   const [modalShow, setModalShow] = React.useState(false);
   return (
     <>
@@ -150,4 +110,4 @@ const JShUser = () => {
   );
 };
 
-export default JShUser;
+export default SponsorEdit;
