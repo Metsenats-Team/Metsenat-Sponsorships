@@ -16,11 +16,9 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-
 app.UseHttpsRedirection();
-
+app.UseMiddleware();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

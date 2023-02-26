@@ -2,6 +2,7 @@
 using Metsenat.BLL.DTOs;
 using Metsenat.BLL.Interfaces;
 using Metsenat.BLL.ViewModels;
+using Metsenat.Common.Exceptions;
 using Metsenat.Data.Data;
 using Metsenat.Data.Entities;
 
@@ -41,7 +42,7 @@ public class SponsorService : ISponsorService
     {
         var sponsor = await _repository.GetSponsorByIdAsync(sponsorId);
         if (sponsor is null)
-            throw new Exception();
+            throw new NotFoundException<Sponsor>();
         return sponsor.Adapt<SponsorView>();
     }
 
