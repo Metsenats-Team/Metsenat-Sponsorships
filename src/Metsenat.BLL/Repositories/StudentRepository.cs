@@ -33,13 +33,8 @@ public class StudentRepository : IStudentRepository
     public async Task<List<Student>> GetAllStudentsAsync() =>
         await _context.Students.ToListAsync();
     public async Task<Student> GetStudentByIdAsync(int studentId)
-    {
-        var student = await _context.Students.FirstOrDefaultAsync(s => s.Id == studentId);
-        if (student is null)
-            return null!;
-
-        return student;
-    }
+        => await _context.Students.FirstOrDefaultAsync(s => s.Id == studentId);
+    
     public async Task<Student> UpdateStudentAsync(Student updateStudent)
     {
         _context.Students.Update(updateStudent);
