@@ -12,7 +12,7 @@
 - [x] mapster,
 - [ ] fluentvalidation,
 - [x] serilog,
-
+- [x] Global Exception Handling
 - [x] unit test,
 - [x] xunit,
 - [x] moq,
