@@ -5,7 +5,7 @@ using Metsenat.BLL.Services;
 using Metsenat.Data.Entities;
 using Moq;
 
-namespace Metsenat.Test;
+namespace Metsenat.Test.Tests;
 public class StudentServiceTest
 {
     private readonly StudentService _studentService;
@@ -49,7 +49,6 @@ public class StudentServiceTest
         Assert.NotNull(result);
         Assert.Equal(students.Count, result.Count);
     }
-
     [Fact]
     public async Task GetStudentByIdAsync_Test()
     {
@@ -67,7 +66,6 @@ public class StudentServiceTest
         var result = await _studentService.GetStudentByIdAsync(1);
         Assert.Equal(student.FullName, result.FullName);
     }
-
     [Fact]
     public async Task AddStudentAsync_Test()
     {
