@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 using System.Net;
 
 namespace Metsenat.Common.Middlewares;
-
 public class GlobalExceptionMiddleware
 {
     private readonly RequestDelegate _next;
@@ -13,7 +12,6 @@ public class GlobalExceptionMiddleware
     {
         _next = next;
     }
-
     public async Task InvokeAsync(HttpContext httpContext)
     {
         try
@@ -48,8 +46,7 @@ public class GlobalExceptionMiddleware
 
         await context.Response.WriteAsync(new ErrorDetails()
         {
-            StatusCode = context.Response.StatusCode,
-            Message = message
+            ErrorMessage = message
         }.ToString());
 
     }

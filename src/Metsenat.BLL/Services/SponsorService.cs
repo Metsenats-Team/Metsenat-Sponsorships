@@ -50,7 +50,7 @@ public class SponsorService : ISponsorService
     {
         var sponsor = await _repository.GetSponsorByIdAsync(sponsorId);
         if (sponsor is null)
-            throw new Exception();
+            throw new NotFoundException<Sponsor>();
         var currentsponsor = await _repository.UpdateSponsorAsync(sponsorId, updateSponsorDto);
         return currentsponsor.Adapt<SponsorView>();
     }
