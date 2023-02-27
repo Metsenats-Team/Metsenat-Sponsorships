@@ -1,6 +1,5 @@
 ﻿using Metsenat.Data.Entities.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Metsenat.Data.Entities;
 public class Sponsor

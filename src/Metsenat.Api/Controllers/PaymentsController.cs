@@ -12,7 +12,7 @@ public class PaymentsController : ControllerBase
     public PaymentsController(IStripeService stripeService)
         => _stripeService = stripeService;
     
-    [HttpPost("customer/add")]
+    [HttpPost]
     public async Task<ActionResult<StripeCustomer>> AddStripeCustomer(
            [FromBody] AddStripeCustomer customer, CancellationToken ct)
     {
