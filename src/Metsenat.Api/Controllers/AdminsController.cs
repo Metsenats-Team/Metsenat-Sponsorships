@@ -1,4 +1,5 @@
 ﻿using Metsenat.BLL.DTOs;
+using Metsenat.BLL.FilterDtos;
 using Metsenat.BLL.Interfaces;
 using Metsenat.BLL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +29,9 @@ public class AdminsController : ControllerBase
     }
 
     [HttpGet("/students")]
-    [ProducesResponseType(typeof(List<StudentView>),StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetStudents()
-        => Ok(await _studentService.GetAllStudentsAsync());
+    [ProducesResponseType(typeof(List<StudentView>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetStudents([FromQuery] StudentFilterDto sortingFilterParams)
+        => Ok(await _studentService.GetAllStudentsAsync(sortingFilterParams));
 
     [HttpGet("/students/{studentId:int}")]
     [ProducesResponseType(typeof(StudentView), StatusCodes.Status200OK)]
