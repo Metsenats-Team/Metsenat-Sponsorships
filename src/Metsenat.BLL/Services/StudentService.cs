@@ -4,6 +4,8 @@ using Metsenat.Common.Exceptions;
 using Metsenat.BLL.Interfaces;
 using Metsenat.BLL.ViewModels;
 using Metsenat.Data.Entities;
+using Metsenat.BLL.FilterDtos;
+using Metsenat.Data.Entities.Enums;
 
 namespace Metsenat.BLL.Services;
 public class StudentService : IStudentService
@@ -39,6 +41,19 @@ public class StudentService : IStudentService
         await _studentRepository.UpdateStudentAsync(student);
         return student.Adapt<StudentView>();
     }
-    public async Task<List<StudentView>> GetAllStudentsAsync()
-        => (await _studentRepository.GetAllStudentsAsync()).Adapt<List<StudentView>>();
+    public async Task<List<StudentView>> GetAllStudentsAsync(StudentFilterDto sortingFilterDto)
+    {
+        var existingStudents = await _studentRepository.GetAllStudentsAsync();
+
+        if (sortingFilterDto.StudentFilter is not null)
+            existingStudents.Where(s => s.StudentDegree.Equals(EStudentDegree.Bachelors)).ToList();
+        else
+            existingStudents.Where(s => s.StudentDegree.Equals(EStudentDegree.Masters)).ToList();
+
+        if (sortingFilterDto.UniversityName is not null)
+            existingStudents = (existingStudents.Where(s =>
+            s.UniversityName == sortingFilterDto.UniversityName)).ToList();
+
+        return existingStudents.Adapt<List<StudentView>>();
+    }
 }
